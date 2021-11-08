@@ -140,6 +140,7 @@ header {
 .api-dash {
   margin-left: 270px;
   min-height: 100vh;
+  min-width: 100%;
   padding: 0px;
   top: 130px;
   position: absolute;
@@ -151,7 +152,7 @@ header {
   /* transition: left 0.5s linear 0.5s; */
   /* background-color: #102; */
 }
-.api-dash .col-sm-6 {
+.api-dash .col-md-6 {
   padding: 10px;
   min-width: 50%;
 }
@@ -257,7 +258,8 @@ code {
   padding-top: 25px;
 }
 
-@media only screen and (max-width:768px) {
+/* @media only screen and (max-width:768px) { */
+@media only screen and (max-width:992px) {
   /* header{
     height: 90px;
     position: fixed;
@@ -277,11 +279,11 @@ code {
     top: 0;
     width: 0px;
     min-width: 0px;
-    /* position: relative; */
     /* display: none; */
   }
   .api-dash { /* main page dashboard */
     margin-left: auto;
     padding: 5px;
+    margin-top: -30px;
   }
 }

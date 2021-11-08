@@ -22,7 +22,7 @@ if($(window).width() > '768'){
   });
 }
 
-if($(window).width() <= '768'){
+if($(window).width() <= '992'){
   // Navbar fixed on scrol50pxl
   document.addEventListener("DOMContentLoaded", function(){
     window.addEventListener('scroll', function() {
@@ -40,6 +40,7 @@ if($(window).width() <= '768'){
   });
 }
 
+// Show page settings in a dropdown menu
 function showsettings(){
   var navbar = document.getElementsByClassName('navbar')[0];
   var li = navbar.getElementsByTagName('li');
@@ -57,26 +58,62 @@ function showsettings(){
   }
 }
 
+// This detects a change in the the innerhtml of navbar dropdown links
+var navbar = document.getElementsByClassName('navbar')[0];
+var li = navbar.getElementsByTagName('li');
+
+for (var i = 0; i<li.length; i=i+1){
+  if(i % 2 == 1){
+    // create a new instance of 'MutationObserver' named 'observer',
+    // passing it a callback function
+    observer = new MutationObserver(function(mutationsList, observer) {
+       console.log(mutationsList[0].addedNodes[0].textContent);
+       if(mutationsList[0].addedNodes[0].textContent == 'Single column'){
+         
+       }
+    });
+
+    // call 'observe' on that MutationObserver instance,
+    // passing it the element to observe, and the options object
+    observer.observe(li[i].children[0], {
+       characterData: false,
+       childList: true,
+       attributes: false
+    });
+  }
+}
+
 // show endpoints list of class "api-keys" on toggler-bars clicked
 document.getElementsByClassName('toggle-bars')[0].addEventListener('click', function() {
   // if()sfa-times
-  if(this.childNodes[1].classList == 'fa fa-bars'){
-    this.childNodes[1].classList.remove('fa-bars')
-    this.childNodes[1].classList.add('fa-times')
-    document.getElementsByClassName('api-keys')[0].style.width = '260px';
-    document.getElementsByClassName('api-dash')[0].style.marginLeft = '260px';
-    document.getElementsByTagName('header')[0].style.marginLeft = '260px';
-  } else {
-    this.childNodes[1].classList.remove('fa-times')
-    this.childNodes[1].classList.add('fa-bars')
+
+    if(this.childNodes[1].classList == 'fa fa-bars'){
+      this.childNodes[1].classList.remove('fa-bars')
+      this.childNodes[1].classList.add('fa-times')
+      document.getElementsByClassName('api-keys')[0].style.width = '260px';
+      document.getElementsByClassName('api-dash')[0].style.marginLeft = '260px';
+      // if($(window).width() <= '768'){
+        document.getElementsByTagName('header')[0].style.marginLeft = '260px';
+      // }
+    } else {
+      this.childNodes[1].classList.remove('fa-times')
+      this.childNodes[1].classList.add('fa-bars')
+      document.getElementsByClassName('api-keys')[0].style.width = '0px';
+      document.getElementsByClassName('api-dash')[0].style.marginLeft = '10px';
+      document.getElementsByTagName('header')[0].style.marginLeft = '0px';
+    }
+});
+
+function action(){
+  if($(window).width() <= '992'){
+    document.getElementsByClassName('toggle-bars')[0].childNodes[1].classList.remove('fa-times')
+    document.getElementsByClassName('toggle-bars')[0].childNodes[1].classList.add('fa-bars')
     document.getElementsByClassName('api-keys')[0].style.width = '0px';
     document.getElementsByClassName('api-dash')[0].style.marginLeft = '10px';
     document.getElementsByTagName('header')[0].style.marginLeft = '0px';
   }
-});
 
-function action(){
-  $('.api-dash .col-sm-6')[0].innerHTML = '\
+  $('.api-dash .col-md-6')[0].innerHTML = '\
   <div class="end-points">\
     <div class="border-bottom">\
       <h2>Hive UniDash API</h2>\
@@ -116,7 +153,7 @@ function action(){
 }
 
 function hiveunidash(e){
-  $('.api-dash .col-sm-6')[0].innerHTML = '\
+  $('.api-dash .col-md-6')[0].innerHTML = '\
     <div class="hiveunidash">\
       <div class="" id="introduction">\
         <h4>Introduction</h4>\
