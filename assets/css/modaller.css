@@ -1,0 +1,9 @@
+.modal-lg {
+    max-width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.pdfobject-container {
+    width: 100%;
+}

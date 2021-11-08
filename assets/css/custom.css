@@ -1,0 +1,167 @@
+/* Side nav with quick links on wide screens */
+.p-sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  max-width: 340px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 0; /* Stay on top */
+  top: 150px; /* Stay at the top */
+  left: 0;
+  background-color: transparent; /* */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+.p-sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #818181;
+  display: block;
+}
+
+.privacy-content{
+  margin-top: 10px;
+  margin-left: 350px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
+
+/*  privacy Policy */
+.privacy-content .privacy-content-body .row .col-6 h4 {
+  color: #000000c9;
+  font-size: 22px !important;
+}
+
+.privacy-content .privacy-content-body .row .col-6 {
+  font-size: 15px;
+}
+
+.privacy-content .privacy-content-body .row ul li {
+  margin-left: 20px;
+}
+
+/* Terms of service inherit styling classes from privacy policy */
+/* Terms of service */
+.privacy-content .privacy-content-body .row .col-8 h4 {
+  color: #000000c9;
+  font-size: 22px !important;
+}
+
+.privacy-content .privacy-content-body .row .col-8 {
+  font-size: 15px;
+}
+
+/* Cards at terms of services */
+#RenaultK-ZE, #Chery-Tiggo-3x-Diamond-Edition-8, #byd, #ChanganOshan {
+  display: none;
+}
+
+.car-info {
+  padding: 25px;
+}
+
+.vehiclelinks{
+  list-style-type: none;
+}
+.vehiclelinks li a{
+  color: #6c7b95 !important;
+  font-weight: 300;
+  line-height: 1.7;
+}
+/* ******************************************* */
+
+  /* Responsiveness */
+
+ @media only screen and (max-width: 992px) {
+   .legal-tabs {
+     margin-top: 50px;
+   }
+   .button-addon2 {
+     margin-top: 4px
+   }
+ }
+/* At @media screen with max-width of 768px {
+
+ } */
+   @media only screen and (max-width: 768px) {
+     .p-sidenav {
+       display: none;
+     }
+     .privacy-content {
+      margin: auto;
+      width: 91%;
+      /* border: 5px solid #FFFF00; */
+      padding: 10px;
+    }
+
+    .privacy-content .privacy-content-body {
+      width: 100%;
+      margin: auto 13px auto 15px;
+      font-size: 15px;
+      /* border: 5px solid #FFFF00; */
+    }
+
+/* Privacy Policy */
+    .privacy-content .privacy-content-body .col-6{
+      margin: auto;
+      min-width: 100%;
+      /* border: 5px solid #FFFF00; */
+      padding: 10px;
+    }
+
+    .privacy-content .privacy-content-body .row .col-6 h4 {
+      font-size: 21px;
+    }
+
+    /* TErms of services */
+    .privacy-content .privacy-content-body .col-8{
+      margin: auto;
+      min-width: 100%;
+      /* border: 5px solid #FFFF00; */
+      padding: 10px;
+    }
+
+    .privacy-content .privacy-content-body .row .col-8 h4 {
+      font-size: 21px;
+    }
+
+    .legal-tabs {
+      margin-top: 70px;
+    }
+    .legal-tabs a {
+      padding: 9px;
+    }
+  }
+
+
+  /* The side navigation menu */
+ .sidenav {
+   height: 100%; /* 100% Full-height */
+   width: 0; /* 0 width - change this with JavaScript */
+   position: fixed; /* Stay in place */
+   z-index: 1; /* Stay on top */
+   top: 0; /* Stay at the top */
+   left: 0;
+   background-color: white; /* Black*/
+   overflow-x: hidden; /* Disable horizontal scroll */
+   padding-top: 110px; /* Place content 60px from the top */
+   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+ }
+
+ /* The navigation menu links */
+ .sidenav a {
+   padding: 8px 8px 8px 28px;
+   text-decoration: none;
+   font-size: 15px;
+   color: #818181;
+   display: block;
+   transition: 0.3s;
+ }
+
+ /* When you mouse over the navigation links, change their color */
+ .sidenav a:hover {
+   color: #f1f1f1;
+ }
+
+.scroll-alert {
+  display: none;
+}

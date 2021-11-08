@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hive UniDash API</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="assets/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="assets/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="assets/css/aos.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/csstyle.css"> <!-- This the custom css file -->
+    <link rel="stylesheet" href="assets/css/font-awesome-4.7.0/css/font-awesome.min.css">
+
+  </head>
+  <body>
+    <!-- Nav bar -->
+    <header class="container-fluid shadow-sm p-3 mb-5 bg-white rounded border-bottom" id="header">
+      <div class="logo">
+        <div class="toggle-bars" id="toggle-bars">
+          <span class="fa fa-bars"></span>
+        </div>
+        <h3>Hive UniDash API</h3>
+        <div class="settings" onclick="showsettings();">
+          <img src="assets/images/ico/settings--ico.png"/>
+          <i class="fa fa-caret-down"></i>
+        </div>
+      </div>
+      <div class="navbar navbar-expand-sm" id="navbar_top">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <span>Environment</span>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-item dropdown-toggle" href="#" id="navbarDropdown0" role="button" data-toggle="dropdown" aria-expanded="false">
+              Hive UniDash
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown0">
+              <li><a class="dropdown-item" onclick="selecteddropdown(this);" href="#">Hive UniDash</a></li>
+              <li><a class="dropdown-item" onclick="selecteddropdown(this);" href="#">No Environment</a></li>
+              <!-- <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+            </ul>
+          </li>
+          <li class="nav-item">
+            <span>Layout</span>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-item dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+              Double column
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" onclick="selecteddropdown(this);" href="#">Double column</a></li>
+              <li><a class="dropdown-item" onclick="selecteddropdown(this);" href="#">Single column</a></li>
+              <!-- <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+            </ul>
+          </li>
+          <li class="nav-item">
+            <span>Language</span>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-item dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+              C#
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
+                <input class="language-search" placeholder="search" type="search" />
+              </li>
+              <li><a class="dropdown-item" onclick="selecteddropdown(this);" href="#">C#</a></li>
+              <li><a class="dropdown-item" onclick="selecteddropdown(this);" href="#">Dart</a></li>
+              <li><a class="dropdown-item" onclick="selecteddropdown(this);" href="#">Javascript</a></li>
+              <li><a class="dropdown-item" onclick="selecteddropdown(this);" href="#">C</a></li>
+              <!-- <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Main body section -->
+    <section class="row">
+      <div class="api-keys" id="api-keys">
+        <h1><a href="#">Hive UniDash</a></h1>
+        <!-- <details> -->
+          <!-- <summary>Introduction</summary> -->
+          <ul class="keylist">
+            <li><a href="#introduction" onclick="hiveunidash(this);">Introduction</a></li>
+            <li><a href="#dataTypes" onclick="hiveunidash(this);">Data Types & Response Format</a></li>
+            <li><a href="#errorcodes" onclick="hiveunidash(this);">Error Codes</a></li>
+        </ul>
+        <!-- </details> -->
+        <h1><a href="#">Auth</a></h1>
+
+        <ul class="keylist">
+          <li><a href="#" onclick="action(this);">Email - Password Auth</a></li>
+          <li><a href="#">ReAuthenticate User</a></li>
+          <li><a href="#">Send Email Verification Link</a></li>
+          <li><a href="#">Update User Role on Phone Auth</a></li>
+          <li><a href="#">Get Custom User Token</a></li>
+          <li><a href="#">Get user Auth IDs with Custom Token</a></li>
+          <li><a href="#">Verify User Email</a></li>
+          <li><a href="#">Patch User Role</a></li>
+          <li><a href="#">Patch User Password</a></li>
+          <li><a href="#">User Email Confirmation-InMail Link</a></li>
+        </ul>
+
+        <h1><a href="#">Users</a></h1>
+
+        <ul class="keylist">
+          <li><a href="#">Create Saff Accoount</a></li>
+          <li><a href="#">Patch Staff</a></li>
+          <li><a href="#">Patch Staff Email</a></li>
+          <li><a href="#">Patch Staff Department</a></li>
+          <li><a href="#">Patch Staff Role</a></li>
+          <li><a href="#">Create MakeJewel Seller</a></li>
+          <li><a href="#">Register MakeJewel Seller</a></li>
+          <li><a href="#">Patch Seller Profile Image</a></li>
+          <li><a href="#">Update Product Images</a></li>
+          <li><a href="#">Handle Contact as form-makejewel.co</a></li>
+          <li><a href="#">Patch Seller</a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#">Handle Contact as form-makejewel.co</a></li>
+        </ul>
+      </div>
+      <div class="row api-dash container">
+        <div class="col-sm-6 col-md-6">
+          <!--  -->
+          <!-- <div class="end-points">
+            <div class="border-bottom">
+              <h2>Hive UniDash API</h2>
+            </div>
+            <div class="intro border-bottom">
+              <h3>Auth</h3>
+            </div>
+            <div class="api-info">
+              <div class="info-title">
+                <span class="method">POST</span>
+                <span class="method-info">Email - Password Auth</span>
+              </div>
+              <div class="endpoint-url">
+                https://us-central1-hive-unidash.cloudfunctions.net/api/auth/sign_in
+              </div>
+              <div class="endpoint-body">
+                <div class="endpoint-body-title border-bottom">
+                  <b>Body</b> <span>raw</span>
+                </div>
+                <div class="endpoint-json-body">
+                  <samp>
+                    { <br>
+                        &nbsp; "email": "hermann@kumasihive.com", <br>
+                        &nbsp; "password": "user@Pass123" <br>
+                    }
+                  </samp>
+                </div>
+              </div>
+              <div class="endpoint-description">
+                <p>
+                  This endpoint is used to authenticate a user by passing the user's email and password as a request parameter.
+                </p>
+              </div>
+            </div>
+          </div> -->
+          <div class="hiveunidash">
+
+            <div class="" id="introduction">
+              <h4>Introduction</h4>
+              <p>
+                The purpose of this document is to describe how the Solar Taxi Deliver Platform shall expose it's service to
+                third parties via an API. The API require a client access token which can be requested by emailing
+                admin@solartaxi.co.
+              </p>
+            </div>
+            <div class="" id="dataTypes">
+              <h4>Data Types & Response Format</h4>
+              <p>
+                The API we have follows all the following DATATYPES and Response Formats.
+                <ul>
+                  <li>
+                    Throughout the api the date format we recommend is YYYY-MM-DD HH:MM:SS. Explore
+                    http://gr2m.github.io/moment-parseformat/ for more formats.
+                  </li>
+                  <li>
+                    The response format will be JSON having status, message and data key.
+                    <br>
+                    <samp>
+                      { <br>
+                        &nbsp; "message": "successful", <br>
+                        &nbsp; "status": 200, <br>
+                        &nbsp; "data": {} <br>
+                      }
+                    </samp>
+                  </li>
+                </ul>
+              </p>
+            </div>
+            <div class="" id="errorcodes">
+              <h4>Error Codes</h4>
+              <p>
+                When something is wrong with a request, the API will respond with a non-<code>200</code>
+                status code in the response. To help you better understand the problem, where possible, the API
+                overloads a number of different error codes so your application logic has as much visibility as
+                possible into what has gone wrong.
+              </p>
+              <p>
+                <code>100</code>  -- PARAMETER_MISSING <br>
+                <code>401</code>  -- INVALID_KEY <br>
+                <code>400</code>  -- ERROR_IN_EXECUTION <br>
+                <code>404</code>  -- RESOURCE_NOT_FOUND <br>
+              </p>
+            </div>
+          </div>
+          <!--  -->
+        </div>
+        <div class="col-sm-6 output">
+
+        </div>
+      </div>
+    </section>
+
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/jquery-migrate-3.0.0.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/jquery.sticky.js"></script>
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="assets/js/jquery.animateNumber.min.js"></script>
+    <script src="assets/js/jquery.fancybox.min.js"></script>
+    <script src="assets/js/jquery.stellar.min.js"></script>
+    <script src="assets/js/jquery.easing.1.3.js"></script>
+    <script src="assets/js/bootstrap-datepicker.min.js"></script>
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/typed.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/indexer.js"></script>
+    <script src="assets/js/scriptjsq.js"></script>
+
+    <script type="text/javascript">
+
+    </script>
+  </body>
+</html>
+<!-- <div class="api-endpoints">
+  <div class="header border-bottom">
+    <h2>Hive UniDash API</h2>
+  </div>
+  <div class="intro">
+    <h3>Auth</h3>
+  </div>
+  <div class="api-info">
+    <div class="info-title">
+      <span class="method">POST</span>
+      <span class="method-info">Email - Password Auth</span>
+    </div>
+    <div class="endpoint-url">
+      https://us-central1-hive-unidash.cloudfunctions.net/api/auth/sign_in
+    </div>
+
+    <div class="endpoint-body">
+      <div class="endpoint-body-title">
+        <b>Body</b> <span>raw</span>
+      </div>
+      <div class="endpoint-json-body">
+        <samp>
+          { <br>
+              &nbsp; "email": "hermann@kumasihive.com", <br>
+              &nbsp; "password": "user@Pass123" <br>
+          }
+        </samp>
+      </div>
+    </div>
+  </div>
+</div> -->

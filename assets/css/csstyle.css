@@ -1,0 +1,287 @@
+/* Top Navbar styling */
+header {
+  background-color: white;
+}
+.settings { /* settins icon which shows on mobile screens */
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 35px;
+  font-size: 12px;
+  cursor: pointer;
+  display: none;
+}
+
+.settings img {
+  width: 25px;
+}
+
+.toggle-bars { /* bootstrap bars icon for mobile screens which displays the endpoint lists */
+  position: fixed;
+  top: 0;
+  left: 5;
+  padding-top: 30px;
+  font-size: 18px;
+  cursor: pointer;
+  display: none
+}
+
+.logo h3{
+  padding-top: 15px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  font-size: 22px;
+}
+
+/* Navbar class is the part of the header tag with Documentation settings */
+.navbar li{
+  padding: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.row {
+  min-width: 100hv;
+}
+.navbar li span {
+  margin-right: 12px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgb(153, 153, 153);
+  display: flex;
+  -moz-box-align: center;
+  align-items: center;
+}
+.navbar a {
+  margin-left: 0px;
+  margin-right: 16px;
+  color: rgb(239, 91, 37) !important;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  white-space: nowrap;
+  max-width: 168px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  -moz-box-align: center;
+  align-items: center;
+}
+
+.language-search {
+  height: 33px;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.api-keys {
+  display: block;
+  /* top: 40px; */
+  width: 260px;
+  min-width: 260px;
+  height: 100vh;
+  background-color: whitesmoke;
+  overflow: auto;
+  overscroll-behavior: contain;
+  top: 130px;
+  left: 0px;
+  /* left: -260px; */
+  position: fixed;
+  /* transition: left 0.5s linear 0.5s; */
+  transition: width 0.5s, height 0s;
+}
+.api-keys h1 {
+  color: rgb(33, 33, 33);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  padding: 6px 0px 6px 6px;
+  margin: 21px 10px 1px 11px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: rgb(237, 237, 237);
+  font-family: inherit;
+}
+.api-keys h1 a{
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+}
+.keylist li {
+  display: inline;
+  -moz-box-pack: start;
+  justify-content: flex-start;
+  -moz-box-align: center;
+  align-items: center;
+  min-height: 30px;
+  padding: 20px;
+}
+.keylist li a {
+  padding: 10px;
+  font-size: 12px;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgb(33, 33, 33);
+  margin: 0px 5px 0px 10px;
+}
+.keylist li a:hover{
+  text-decoration: underline;
+  color: #1f41c8;
+}
+.api-dash {
+  margin-left: 270px;
+  min-height: 100vh;
+  padding: 0px;
+  top: 130px;
+  position: absolute;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  font-size: 16px;
+  font-weight: 400;
+  transition: left 2.5s, linear 0s;
+  /* transition: left 0.5s linear 0.5s; */
+  /* background-color: #102; */
+}
+.api-dash .col-sm-6 {
+  padding: 10px;
+  min-width: 50%;
+}
+.api-dash h4 {
+  padding: 0px 0px 0px 0px;
+  text-align: center;
+  color: rgb(40, 40, 40);
+}
+.api-dash .api-endpointsheader .border-bottom {
+  width: 100%;
+}
+.api-dash h3 {
+  overflow-wrap: break-word;
+  color: rgb(40, 40, 40);
+  padding: 30px;
+  margin: 0px 0px 10px;
+  font-weight: 400;
+  /* font-size: 30px; */
+}
+.api-dash h2 {
+  overflow-wrap: break-word;
+  color: rgb(40, 40, 40);
+  padding: 30px;
+  margin: 0px 0px 10px;
+  font-weight: 400;
+  font-size: 36px;
+  min-width: 100%;
+}
+.api-dash ul {
+  margin-left: 20px;
+}
+code {
+  color: #584773;
+  background-color: #fafafc;
+  border-color: #e3e4e7;
+}
+.white-background {
+  background-color: #fff;
+}
+.output {
+  background-color: #102;
+  min-height: 100%;
+  margin-top: 0px;
+  border: solid 5px #05043eb3;
+  overflow-y: scroll;
+}
+
+.api-info .info-title {
+  margin: 20px 0px 10px;
+  font-weight: 700;
+}
+.method {
+  margin-right: 10px;
+  font-size: 16px;
+  color: rgb(255, 180, 0);
+}
+.method-info {
+  display: inline;
+  overflow-wrap: break-word;
+  color: rgb(40, 40, 40);
+  font-size: 16px !important;
+}
+.endpoint-url {
+  display: inline-block;
+  word-break: break-all;
+  border: 1px solid rgb(230, 230, 230);
+  padding: 6px 10px;
+  border-radius: 3px;
+  font-size: 12px;
+  color: rgb(40, 40, 40);
+  background-color: rgb(248, 248, 248);
+  margin: 5px 0px 15px;
+  width: 100%;
+}
+.endpoint-body-title{
+  border-bottom: solid 2px rgb(230, 230, 230);
+}
+.endpoint-body-title b{
+  height: 24px;
+  line-height: 24px;
+  font-weight: 700;
+  font-size: 14px;
+  color: rgb(26, 26, 26);
+  text-transform: uppercase;
+  margin-right: 8px;
+}
+.endpoint-body-title span{
+  color: rgb(102, 102, 102);
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+}
+.endpoint-json-body {
+  padding: 5px 10px !important;
+  background-color: rgb(250, 250, 250) !important;
+  border-radius: 3px !important;
+  border: thin solid rgb(230, 230, 230) !important;
+  font-size: 12px !important;
+  line-height: 18px !important;
+  font-family: Courier, sans-serif !important;
+}
+.endpoint-description {
+  padding-top: 25px;
+}
+
+@media only screen and (max-width:768px) {
+  /* header{
+    height: 90px;
+    position: fixed;
+    top: 0;
+    background-color: white;
+  } */
+  .settings, .toggle-bars {
+    display: block;
+  }
+  .logo h3{
+    margin-left: 45px;
+  }
+  .navbar li{
+    display: none;
+  }
+  .api-keys{ /* endpoint lists at the side bar */
+    top: 0;
+    width: 0px;
+    min-width: 0px;
+    /* position: relative; */
+    /* display: none; */
+  }
+  .api-dash { /* main page dashboard */
+    margin-left: auto;
+    padding: 5px;
+  }
+}
