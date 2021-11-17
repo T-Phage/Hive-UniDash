@@ -47,6 +47,11 @@ function showsettings(){
   var links = navbar.getElementsByTagName('a')
   var span = navbar.getElementsByTagName('span')
 
+  console.log(span);
+  navbar.style.backgroundColor = "white";
+  // navbar.style.position = 'fixed';
+  navbar.style.minWidth = '100%';
+  navbar.style.zIndex = '1060';
   for (var i = 0; i<li.length; i=i+1){
     if(i % 2 == 1){
       if (li[i].style.display == 'none'){
@@ -69,7 +74,12 @@ for (var i = 0; i<li.length; i=i+1){
     observer = new MutationObserver(function(mutationsList, observer) {
        console.log(mutationsList[0].addedNodes[0].textContent);
        if(mutationsList[0].addedNodes[0].textContent == 'Single column'){
-         
+         console.log('Single');
+         document.getElementsByClassName('input')[0].style.minWidth = '80%';
+         document.getElementsByClassName('output')[0].style.minWidth = '80%';
+       } else if (mutationsList[0].addedNodes[0].textContent == 'Double column') {
+         document.getElementsByClassName('input')[0].style.minWidth = '';
+         document.getElementsByClassName('output')[0].style.minWidth = '';
        }
     });
 
@@ -104,7 +114,7 @@ document.getElementsByClassName('toggle-bars')[0].addEventListener('click', func
     }
 });
 
-function action(){
+function action(e){
   if($(window).width() <= '992'){
     document.getElementsByClassName('toggle-bars')[0].childNodes[1].classList.remove('fa-times')
     document.getElementsByClassName('toggle-bars')[0].childNodes[1].classList.add('fa-bars')
@@ -112,47 +122,152 @@ function action(){
     document.getElementsByClassName('api-dash')[0].style.marginLeft = '10px';
     document.getElementsByTagName('header')[0].style.marginLeft = '0px';
   }
+  console.log(e.attributes);
+  // console.log(e.attributes[1].textContent);
+  if(e.attributes[4].textContent == "GET"){ // IF REQUEST method is GET
+    fetch(""+e.attributes[3].textContent+"")//,{
+      // method: 'GET', // *GET, POST, PUT, DELETE, etc.
+      // mode: 'cors', // no-cors, *cors, same-origin
+      // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      // credentials: 'omit', // include, *same-origin, omit
+      // headers: {
+      //   'Content-Type': 'application/json'
+      //   // 'Content-Type': 'application/x-www-form-urlencoded',
+      // },
+      // body: JSON.stringify({
+        //
+        // })
+      // })
+      .then((response) => {
+        return response.json();
+      })
+      .then((myJson) => {
+        console.log(myJson);
+        $('.api-dash .col-md-6')[1].innerHTML = '\
+          <div class="title">Example Request</div>\
+          <hr class="border border-secondary" style="background-color:white;color:white; margin-top:10px;">\
+          <div class="container">\
+            <span style="color:#ddb3b55e;font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;font-size: 17px;font-weight: 600;padding-bottom: 20px;padding-top: 20px;">\
+              <span class="border-bottom border-secondary row" style="min-width:100%">Response Code&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</span>\
+              <span class="row">'+e.attributes[5].textContent+'</span>\
+            </span> \
+          </div>\
+          <hr class="border-bottom border-secondary" style="background-color:white;color:white;"> \
+          <div class="code">\
+            fetch(<span class="urlStr">"'+e.attributes[3].textContent+'"</span>) <br>\
+            &nbsp; .then((<span class="var">response)</span> => { <br>\
+              &nbsp; &nbsp; &nbsp; return response.json() <br>\
+            &nbsp; }) <br>\
+            &nbsp; .then((<span class="var">result</span>) => { <br>\
+            &nbsp; &nbsp; &nbsp; console.log(<span class="var">result</span>) <br>\
+            &nbsp; })<br>\
+            &nbsp; .catch((<span class="var">error</span>) => console.log("error", <span class="var">error</span>));<br>\
+          </div>\
+        '
+      })
+      .catch((error) => console.log('error :',error));
 
-  $('.api-dash .col-md-6')[0].innerHTML = '\
-  <div class="end-points">\
-    <div class="border-bottom">\
-      <h2>Hive UniDash API</h2>\
-    </div>\
-    <div class="intro border-bottom">\
-      <h3>Auth</h3>\
-    </div>\
-    <div class="api-info">\
-      <div class="info-title">\
-        <span class="method">POST</span>\
-        <span class="method-info">Email - Password Auth</span>\
-      </div>\
-      <div class="endpoint-url">\
-        https://us-central1-hive-unidash.cloudfunctions.net/api/auth/sign_in\
-      </div>\
-      <div class="endpoint-body">\
-        <div class="endpoint-body-title border-bottom">\
-          <b>Body</b> <span>raw</span>\
+      $('.api-dash .col-md-6')[0].innerHTML = '\
+      <div class="end-points">\
+        <div class="border-bottom">\
+          <h2>Hive UniDash API</h2>\
         </div>\
-        <div class="endpoint-json-body">'+'\
-          <samp>\
-            { <br>\
-                &nbsp; "email": "hermann@kumasihive.com", <br>'+'\
-                &nbsp; "password": "user@Pass123" <br>\
-            }\
-          </samp>\
+        <div class="intro border-bottom">\
+          <h3>'+e.attributes[1].textContent+'</h3>\
+        </div>\
+        <div class="api-info">\
+          <div class="info-title">\
+            <span class="method">'+e.attributes[4].textContent+'</span>\
+            <span class="method-info">'+e.attributes[2].textContent+'</span>\
+          </div>\
+          <div class="endpoint-url">\
+            '+e.attributes[3].textContent+' \
+          </div>\
+          <div class="endpoint-body">\
+            <div class="endpoint-body-title border-bottom">\
+              <b>Body</b> <span>raw</span>\
+            </div>\
+            <div class="endpoint-json-body">'+'\
+              <samp>\
+                { <br> <br>\
+                  <!--  &nbsp; "email": "hermann@kumasihive.com", <br>'+'\
+                    &nbsp; "password": "user@Pass123" <br> -->\
+                }\
+              </samp>\
+            </div>\
+          </div>\
+          <div class="endpoint-description">\
+            <p></p>\
+          </div>\
         </div>\
       </div>\
-      <div class="endpoint-description">\
-        <p>\
-          This endpoint is used to authenticate a user by passing the user\'s email and password as a request parameter.\
-        </p>\
+      '
+  } else if(e.attributes[4].textContent == "POST"){
+
+    // fetch(""+e.attributes[3].textContent+"",{
+    //   method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    //   mode: 'cors', // no-cors, *cors, same-origin
+    //   cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    //   credentials: 'omit', // include, *same-origin, omit
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //     // 'Content-Type': 'application/x-www-form-urlencoded',
+    //   },
+    //   // body: JSON.stringify({
+    //     //
+    //     // })
+    //   })
+    //   .then((response) => {
+    //     return response.json();
+    //   })
+    //   .then((myJson) => {
+    //     console.log(myJson);
+    //     $('.api-dash .col-md-6')[1].innerHTML = '\
+    //       fdjkl\
+    //     '
+    //   })
+
+    $('.api-dash .col-md-6')[0].innerHTML = '\
+      <div class="end-points">\
+        <div class="border-bottom">\
+          <h2>Hive UniDash API</h2>\
+        </div>\
+        <div class="intro border-bottom">\
+          <h3>'+e.attributes[1].textContent+'</h3>\
+        </div>\
+        <div class="api-info">\
+          <div class="info-title">\
+            <span class="method">'+e.attributes[4].textContent+'</span>\
+            <span class="method-info">'+e.attributes[2].textContent+'</span>\
+          </div>\
+          <div class="endpoint-url">\
+            '+e.attributes[3].textContent+' \
+          </div>\
+          <div class="endpoint-body">\
+            <div class="endpoint-body-title border-bottom">\
+              <b>Body</b> <span>raw</span>\
+            </div>\
+            <div class="endpoint-json-body">'+'\
+              <samp>\
+                { <br> <br>\
+                  '+e.attributes[5].textContent+'\
+                  <!--  &nbsp; "email": "hermann@kumasihive.com", <br>'+'\
+                    &nbsp; "password": "user@Pass123" <br> -->\
+                }\
+              </samp>\
+            </div>\
+          </div>\
+          <div class="endpoint-description">\
+            <p></p>\
+          </div>\
+        </div>\
       </div>\
-    </div>\
-  </div>\
-  '
+    '
+  }
 }
 
 function hiveunidash(e){
+  $('.api-dash .col-md-6')[1].innerHTML = '';
   $('.api-dash .col-md-6')[0].innerHTML = '\
     <div class="hiveunidash">\
       <div class="" id="introduction">\
@@ -204,6 +319,7 @@ function hiveunidash(e){
     </div>\
   '
 }
+
     // $('.api-dash .col-sm-6')[0].innerHTML = '\
     //   <div class="hiveunidash">\
     //     <div class="" id="introduction">\

@@ -68,17 +68,17 @@
 
           <li class="nav-item dropdown">
             <a class="nav-item dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-              C#
+              Javascript-fetch
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li>
                 <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
                 <input class="language-search" placeholder="search" type="search" />
               </li>
-              <li><a class="dropdown-item" onclick="selecteddropdown(this);" href="#">C#</a></li>
-              <li><a class="dropdown-item" onclick="selecteddropdown(this);" href="#">Dart</a></li>
-              <li><a class="dropdown-item" onclick="selecteddropdown(this);" href="#">Javascript</a></li>
-              <li><a class="dropdown-item" onclick="selecteddropdown(this);" href="#">C</a></li>
+              <li><a class="dropdown-item" onclick="selecteddropdown(this);" href="#">Javascript-fetch</a></li>
+              <li><a class="dropdown-item" onclick="selecteddropdown(this);" href="#">http-XML</a></li>
+              <li><a class="dropdown-item" onclick="selecteddropdown(this);" href="#">CURL</a></li>
+              <!-- <li><a class="dropdown-item" onclick="selecteddropdown(this);" href="#">C</a></li> -->
               <!-- <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li> -->
             </ul>
@@ -101,8 +101,8 @@
         <!-- </details> -->
         <h1><a href="#">Auth</a></h1>
 
-        <ul class="keylist">
-          <li><a href="#" onclick="action(this);">Email - Password Auth</a></li>
+        <ul class="keylist auth">
+          <!-- <li><a href="#" onclick="action(this);">Email - Password Auth</a></li>
           <li><a href="#">ReAuthenticate User</a></li>
           <li><a href="#">Send Email Verification Link</a></li>
           <li><a href="#">Update User Role on Phone Auth</a></li>
@@ -111,17 +111,17 @@
           <li><a href="#">Verify User Email</a></li>
           <li><a href="#">Patch User Role</a></li>
           <li><a href="#">Patch User Password</a></li>
-          <li><a href="#">User Email Confirmation-InMail Link</a></li>
+          <li><a href="#">User Email Confirmation-InMail Link</a></li> -->
         </ul>
 
         <h1><a href="#">Users</a></h1>
 
-        <ul class="keylist">
-          <li><a href="#">Create Saff Accoount</a></li>
+        <ul class="keylist users">
+          <!-- <li><a href="#">Create Saff Accoount</a></li>
           <li><a href="#">Patch Staff</a></li>
           <li><a href="#">Patch Staff Email</a></li>
-          <li><a href="#">Patch Staff Department</a></li>
-          <li><a href="#">Patch Staff Role</a></li>
+          <li><a href="#">Patch Staff Department</a></li> -->
+          <!-- <li><a href="#">Patch Staff Role</a></li>
           <li><a href="#">Create MakeJewel Seller</a></li>
           <li><a href="#">Register MakeJewel Seller</a></li>
           <li><a href="#">Patch Seller Profile Image</a></li>
@@ -129,7 +129,13 @@
           <li><a href="#">Handle Contact as form-makejewel.co</a></li>
           <li><a href="#">Patch Seller</a></li>
           <li><a href="#"></a></li>
-          <li><a href="#">Handle Contact as form-makejewel.co</a></li>
+          <li><a href="#">Handle Contact as form-makejewel.co</a></li> -->
+        </ul>
+
+        <h1><a href="#">Common</a></h1>
+
+        <ul class="keylist common">
+
         </ul>
       </div>
       <div class="row api-dash container">
@@ -247,10 +253,50 @@
     <script src="assets/js/scriptjsq.js"></script>
 
     <script type="text/javascript">
+      $(document).ready(async function(){
 
+        const response = await fetch('https://us-central1-solar-taxi-admin-dash.cloudfunctions.net/api/endpoints')
+        .then((response) => {
+          return response.json();
+        })
+        .then((myJson) => {
+          console.log(myJson.endpoints);
+          // if(myJson.endpoints[0].name == none)
+          for(var i=0; i<myJson.endpoints.length; i++){
+            if(myJson.endpoints[i].group_name == 'Auth'){
+
+              document.getElementsByClassName('auth')[0].innerHTML = document.getElementsByClassName('auth')[0].innerHTML + '\
+                <li><a href="#" name="'+myJson.endpoints[i].name+'" description="'+myJson.endpoints[i].description+'" url="'+myJson.endpoints[i].url+'" method="'+myJson.endpoints[i].method+'" response="'+myJson.endpoints[i].successCode+'" onclick="action(this);">'+ myJson.endpoints[i].name +'</a></li>\
+              '
+              // console.log(myJson.endpoints[i].name);
+              // console.log(myJson.endpoints[i].description);
+              // console.log(myJson.endpoints[i].url);
+              // console.log(myJson.endpoints[i].method);
+              console.log(myJson.endpoints[i].body);
+              console.log(JSON.stringify(myJson.endpoints[i].body));
+              // console.log(myJson.endpoints[i].authorization.type);
+              // console.log(myJson.endpoints[i].group_name);
+              // console.log(myJson.endpoints[i]);
+            } else if (myJson.endpoints[i].group_name == 'Common') {
+              document.getElementsByClassName('common')[0].innerHTML = document.getElementsByClassName('auth')[0].innerHTML + '\
+                <li>\
+                  <a href="#" name="'+myJson.endpoints[i].name+'" description="'+myJson.endpoints[i].description+'" url="'+myJson.endpoints[i].url+'" method="'+myJson.endpoints[i].method+'" response="'+myJson.endpoints[i].successCode+'" onclick="action(this);">'+ myJson.endpoints[i].name +'</a></li>\
+              '
+            }
+          }
+        })
+        .catch((e) => {console.log(e);});
+      })
+
+      // for (var i=0;i<document.getElementsByTagName('a').length;i++){
+      //   document.getElementsByTagName('a')[i].addEventListener('click', function(event){
+      //     event.preventDefault();
+      //   })
+      // }
     </script>
   </body>
 </html>
+
 <!-- <div class="api-endpoints">
   <div class="header border-bottom">
     <h2>Hive UniDash API</h2>

@@ -139,7 +139,8 @@ header {
 }
 .api-dash {
   margin-left: 270px;
-  min-height: 100vh;
+  /* min-height: 100vh; */
+  min-height: 100%;
   min-width: 100%;
   padding: 0px;
   top: 130px;
@@ -194,12 +195,48 @@ code {
 }
 .output {
   background-color: #102;
-  min-height: 100%;
+  /* min-height: 100%; */
+  min-height: 10vh;
   margin-top: 0px;
   border: solid 5px #05043eb3;
   overflow-y: scroll;
+  overflow-x: scroll;
+  width: 100%;
+}
+.output .code{
+  margin:  0;
+  position: relative;
+  width: 80%;
+  height: 50%;
+  top: 40%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  overflow-x: scroll;
+  color: rgba(230, 219, 116, 0.74); /*rgb(128, 128, 128) !important;*/
+  font-size: 0.95em;
+}
+.output .code .title{
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 50px;
+  display: flex;
+  -moz-box-pack: justify;
+  justify-content: space-between;
+  height: 50px;
+  /* flex: 0 0 0%; */
+  padding-bottom: 20px;padding-top: 20px;
+}
+.output .code .urlStr{
+  color: rgb(166, 226, 46);
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.8em;
 }
 
+.output .code .var{
+  color: whitesmoke;
+  font-size: 0.86em;
+  /* font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
+}
 .api-info .info-title {
   margin: 20px 0px 10px;
   font-weight: 700;
@@ -260,19 +297,19 @@ code {
 
 /* @media only screen and (max-width:768px) { */
 @media only screen and (max-width:992px) {
-  /* header{
-    height: 90px;
-    position: fixed;
-    top: 0;
+  header{
+    height: 80px;
+    /* position: fixed; */
+    /* top: 0; */
     background-color: white;
-  } */
+  }
   .settings, .toggle-bars {
     display: block;
   }
   .logo h3{
     margin-left: 45px;
   }
-  .navbar li{
+  .navbar li span, .navbar li{
     display: none;
   }
   .api-keys{ /* endpoint lists at the side bar */
